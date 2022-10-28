@@ -7,11 +7,11 @@ resource "azurerm_container_registry" "ACR" {
   name                = "containerRegistry17674546"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
-  sku                 = "Premium"
+  sku                 = "Standard"
 }
 
-resource "azurerm_kubernetes_cluster" "AKS" {
-  name                = "akscluster1354645"
+resource "azurerm_kubernetes_cluster" "aks" {
+  name                = "myaks2345"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   dns_prefix          = "exampleaks1"
@@ -32,7 +32,7 @@ resource "azurerm_kubernetes_cluster" "AKS" {
 }
 
 resource "azurerm_role_assignment" "example" {
-  principal_id                     = azurerm_kubernetes_cluster.AKS.kubelet_identity[0].object_id
+  principal_id                     = azurerm_kubernetes_cluster.aks.kubelet_identity[0].object_id
   role_definition_name             = "AcrPull"
   scope                            = azurerm_container_registry.ACR.id
   skip_service_principal_aad_check = true
