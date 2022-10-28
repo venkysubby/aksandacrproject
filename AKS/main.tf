@@ -4,14 +4,14 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_container_registry" "ACR" {
-  name                = "containerRegistry1"
+  name                = "containerRegistry17674546"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   sku                 = "Premium"
 }
 
 resource "azurerm_kubernetes_cluster" "AKS" {
-  name                = "example-aks1"
+  name                = "example-aks1354645"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   dns_prefix          = "exampleaks1"
